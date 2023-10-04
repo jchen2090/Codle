@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll("button");
+const restartButton = document.getElementById("restart");
 const numberDisplays = document.querySelectorAll(".number-display");
 const turns = document.getElementById("clock");
 
@@ -26,8 +27,17 @@ const generateCode = () => {
 
 const endGame = () => {
   buttons.forEach((button) => {
-    button.disabled = true;
+    button.disabled = button.id !== "restart";
   });
+  restartButton.style.display = "block";
+};
+
+const restartGame = () => {
+  buttons.forEach((button) => {
+    button.disabled = false;
+  });
+  clearNumbers();
+  startGame();
 };
 
 const updateTurns = () => {
@@ -42,16 +52,17 @@ const updateTurns = () => {
 
 const addNumber = (number) => {
   if (currentDisplay === 2) {
+    // Makes sure that the last digit is added to numberDisplays
     numberDisplays[currentDisplay].textContent = number;
 
     if (codeIsCorrect()) {
       endGame();
+    } else {
+      setTimeout(() => {
+        clearNumbers();
+        updateTurns();
+      }, 100);
     }
-
-    setTimeout(() => {
-      clearNumbers();
-      updateTurns();
-    }, 100);
   }
   numberDisplays[currentDisplay].textContent = number;
   currentDisplay++;
@@ -64,18 +75,7 @@ const clearNumbers = () => {
 
 const startGame = () => {
   turnsLeft = 7;
+  turns.innerText = `Clock: ${turnsLeft}`;
+  restartButton.style.display = "none";
   code = generateCode();
-
-  console.log(code);
-
-  buttons.forEach((button) => {
-    if (button.textContent === "Clear") {
-      button.addEventListener("click", clearNumbers);
-      return;
-    }
-
-    button.addEventListener("click", () => {
-      addNumber(button.textContent);
-    });
-  });
 };

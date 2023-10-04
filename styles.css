@@ -18,7 +18,7 @@ span {
   margin-bottom: 0.5em;
 }
 
-.button-group {
+.numpad {
   margin-top: 4rem;
   align-self: center;
 }
@@ -36,4 +36,10 @@ span {
   height: 3rem;
   width: 3rem;
   border: 1px solid black;
+}
+
+.restart-button-container {
+  display: block;
+  align-self: center;
+  margin-top: 2rem;
 }

@@ -10,17 +10,21 @@
   <body onload="startGame();">
     <main>
       <h1>Codle</h1>
+      <p class="game-status"></p>
       <span id="clock">Clock: 7</span>
       <div class="number-display-container">
         <div class="number-display"></div>
         <div class="number-display"></div>
         <div class="number-display"></div>
       </div>
-      <div class="button-group">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>Clear</button>
+      <div class="numpad">
+        <button onclick="addNumber('1');">1</button>
+        <button onclick="addNumber('2');">2</button>
+        <button onclick="addNumber('3');">3</button>
+        <button onclick="clearNumbers();">Clear</button>
+      </div>
+      <div class="restart-button-container">
+        <button onclick="restartGame();" id="restart">Restart</button>
       </div>
     </main>
   </body>
