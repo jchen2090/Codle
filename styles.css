@@ -43,3 +43,22 @@ span {
   align-self: center;
   margin-top: 2rem;
 }
+
+.logger-container > .title {
+    margin: 0;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.logger-container > #logs {
+    margin-top: 0.75rem;
+    margin-left: 2rem;
+}
+
+.logger-container > #logs > li:first-child {
+    margin-top: 0.25rem;
+}
+
+.logger-container > #logs > li {
+    margin-top: 0.5rem;
+}

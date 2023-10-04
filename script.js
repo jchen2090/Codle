@@ -2,18 +2,32 @@ const buttons = document.querySelectorAll("button");
 const restartButton = document.getElementById("restart");
 const numberDisplays = document.querySelectorAll(".number-display");
 const turns = document.getElementById("clock");
+const logger = document.getElementById("logs");
 
 let currentDisplay = 0;
 let turnsLeft;
 let code;
 
-const codeIsCorrect = () => {
-  let userInputCode = "";
+const logLine = () => {
+  const userCode = getUserCode();
+  const logLine = document.createElement("li");
 
+  if (userCode - code > 0) {
+    logLine.innerText = "Code is lower";
+  } else if (userCode - code < 0) {
+    logLine.innerText = "Code is higher";
+  } else {
+    logLine.innerText = "Correct";
+  }
+  logger.appendChild(logLine);
+};
+
+const getUserCode = () => {
+  let userInputCode = "";
   numberDisplays.forEach((display) => {
     userInputCode += display.textContent;
   });
-  return userInputCode === code;
+  return userInputCode;
 };
 
 const generateCode = () => {
@@ -33,6 +47,7 @@ const endGame = () => {
 };
 
 const restartGame = () => {
+  logger.innerHTML = null;
   buttons.forEach((button) => {
     button.disabled = false;
   });
@@ -55,7 +70,7 @@ const addNumber = (number) => {
     // Makes sure that the last digit is added to numberDisplays
     numberDisplays[currentDisplay].textContent = number;
 
-    if (codeIsCorrect()) {
+    if (getUserCode() === code) {
       endGame();
     } else {
       setTimeout(() => {
@@ -63,6 +78,7 @@ const addNumber = (number) => {
         updateTurns();
       }, 100);
     }
+    logLine();
   }
   numberDisplays[currentDisplay].textContent = number;
   currentDisplay++;
