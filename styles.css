@@ -1,11 +1,19 @@
 body {
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
 h1 {
+  margin-bottom: 0;
   text-align: center;
+}
+
+#game-status {
+  text-align: center;
+  font-weight: bold;
+  font-size: 26px;
 }
 
 main {
@@ -45,20 +53,20 @@ span {
 }
 
 .logger-container > .title {
-    margin: 0;
-    margin-left: 1rem;
-    font-weight: bold;
+  margin: 0;
+  margin-left: 1rem;
+  font-weight: bold;
 }
 
 .logger-container > #logs {
-    margin-top: 0.75rem;
-    margin-left: 2rem;
+  margin-top: 0.75rem;
+  margin-left: 2rem;
 }
 
 .logger-container > #logs > li:first-child {
-    margin-top: 0.25rem;
+  margin-top: 0.25rem;
 }
 
 .logger-container > #logs > li {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
