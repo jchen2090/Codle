@@ -3,6 +3,7 @@ const restartButton = document.getElementById("restart");
 const numberDisplays = document.querySelectorAll(".number-display");
 const turns = document.getElementById("clock");
 const logger = document.getElementById("logs");
+const gameStatus = document.getElementById("game-status");
 
 let currentDisplay = 0;
 let turnsLeft;
@@ -16,8 +17,6 @@ const logLine = () => {
     logLine.innerText = "Code is lower";
   } else if (userCode - code < 0) {
     logLine.innerText = "Code is higher";
-  } else {
-    logLine.innerText = "Correct";
   }
   logger.appendChild(logLine);
 };
@@ -59,7 +58,8 @@ const updateTurns = () => {
   turnsLeft--;
 
   if (turnsLeft === 0) {
-    console.log("Game over");
+    gameStatus.style.color = "red";
+    gameStatus.innerHTML = "GAME OVER! :(";
     endGame();
   }
   turns.innerText = `Clock: ${turnsLeft}`;
@@ -71,14 +71,16 @@ const addNumber = (number) => {
     numberDisplays[currentDisplay].textContent = number;
 
     if (getUserCode() === code) {
+      gameStatus.style.color = "green";
+      gameStatus.innerHTML = "You win! :)";
       endGame();
     } else {
       setTimeout(() => {
         clearNumbers();
         updateTurns();
       }, 100);
+      logLine();
     }
-    logLine();
   }
   numberDisplays[currentDisplay].textContent = number;
   currentDisplay++;
@@ -93,5 +95,6 @@ const startGame = () => {
   turnsLeft = 7;
   turns.innerText = `Clock: ${turnsLeft}`;
   restartButton.style.display = "none";
+  gameStatus.innerHTML = null;
   code = generateCode();
 };
