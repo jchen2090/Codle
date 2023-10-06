@@ -14,9 +14,9 @@ const logLine = () => {
   const logLine = document.createElement("li");
 
   if (userCode - code > 0) {
-    logLine.innerText = "Code is lower";
+    logLine.innerText = `Guessed ${userCode}, Code is lower`;
   } else if (userCode - code < 0) {
-    logLine.innerText = "Code is higher";
+    logLine.innerText = `Guessed ${userCode}, Code is higher`;
   }
   logger.appendChild(logLine);
 };
