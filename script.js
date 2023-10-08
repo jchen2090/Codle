@@ -60,6 +60,9 @@ const updateTurns = () => {
   if (turnsLeft === 0) {
     gameStatus.style.color = "red";
     gameStatus.innerHTML = "GAME OVER! :(";
+    const logLine = document.createElement("li");
+    logLine.innerText = `Game over, code was: ${code}`;
+    logger.appendChild(logLine);
     endGame();
   }
   turns.innerText = `Turns: ${turnsLeft}`;

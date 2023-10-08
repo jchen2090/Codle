@@ -24,6 +24,10 @@ h1 {
   animation: 2s ease-in 0s fade-in;
 }
 
-li {
+.logger-container > #logs > li {
   animation: 1s ease-in 0s fade-in;
+}
+
+#restart {
+  animation: 3s ease-in 0s fade-in;
 }
