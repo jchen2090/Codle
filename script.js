@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("button");
 const restartButton = document.getElementById("restart");
 const numberDisplays = document.querySelectorAll(".number-display");
-const turns = document.getElementById("clock");
+const turns = document.getElementById("turns-display");
 const logger = document.getElementById("logs");
 const gameStatus = document.getElementById("game-status");
 
@@ -62,7 +62,7 @@ const updateTurns = () => {
     gameStatus.innerHTML = "GAME OVER! :(";
     endGame();
   }
-  turns.innerText = `Clock: ${turnsLeft}`;
+  turns.innerText = `Turns: ${turnsLeft}`;
 };
 
 const addNumber = (number) => {
@@ -93,7 +93,7 @@ const clearNumbers = () => {
 
 const startGame = () => {
   turnsLeft = 7;
-  turns.innerText = `Clock: ${turnsLeft}`;
+  turns.innerText = `Turns: ${turnsLeft}`;
   restartButton.style.display = "none";
   gameStatus.innerHTML = null;
   code = generateCode();

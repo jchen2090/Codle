@@ -1,0 +1,29 @@
+@keyframes slide-from-top {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+}
+
+h1 {
+  animation: 1s ease-in-out 0s slide-from-top;
+}
+
+.logger-container > .title {
+  animation: 2s ease-in 0s fade-in;
+}
+
+li {
+  animation: 1s ease-in 0s fade-in;
+}
